@@ -80,4 +80,9 @@ public class GsonUtil extends JsonUtil<JsonArray, JsonObject> {
         return new JsonObject();
     }
 
+    @Override
+    public JsonObject mergeInto(JsonObject det, JsonObject in) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
