@@ -18,6 +18,7 @@ public abstract class JsonUtil<JsonArray, JsonObject> {
     public JsonObject toJsonObjet(Object... evenNumberedKeyValuePair) {
         return appendToJsonObject(newJsonObject(), evenNumberedKeyValuePair);
     }
+    public abstract JsonObject mergeInto(JsonObject det,JsonObject in);
 
     public JsonArray appendToJsonArray(JsonArray destArray, Object... dataArray) {
         for (Object datai : dataArray) {
