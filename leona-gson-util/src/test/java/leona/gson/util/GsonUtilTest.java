@@ -50,14 +50,18 @@ public class GsonUtilTest {
         System.out.println("toJsonArray");
         JsonArray jsonArray = new JsonArray();
         Object element = 2L;
-        int a[]= {1,2};
+        int subArr[]= {1,2};
         GsonUtil instance = GsonUtil.instance();
+        
         JsonArray expResult = new JsonArray();
         expResult.add(new JsonPrimitive(2L));
-        expResult.add(new JsonPrimitive(1L));
-        expResult.add(new JsonPrimitive(2L));
-        JsonArray result = instance.toJsonArray( element,a);
-        assertEquals(expResult, result);
+        JsonArray jsonSubArr=new JsonArray();
+        jsonSubArr.add(new JsonPrimitive(1L));
+        jsonSubArr.add(new JsonPrimitive(2L));
+        expResult.add(jsonSubArr);
+        
+        
+        JsonArray result = instance.toJsonArray( element,subArr);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");

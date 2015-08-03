@@ -27,7 +27,6 @@ public class GsonUtil extends JsonUtil<JsonArray, JsonObject> {
     private GsonUtil() {
     }
 
-    
     @Override
     public JsonObject addToJsonObject(JsonObject jsonObject, String key, Object property) {
         JsonPrimitive prim = constructPrimitive(property);
@@ -35,7 +34,8 @@ public class GsonUtil extends JsonUtil<JsonArray, JsonObject> {
         if (prim != null) {
             jsonObject.add(key, prim);
         } else {
-            addToJsonObjectAsJsonTree(jsonObject, property);
+
+            jsonObject.add(key, (JsonElement) formAJsonTreeFromObject(property));
         }
 
         return jsonObject;
@@ -43,11 +43,15 @@ public class GsonUtil extends JsonUtil<JsonArray, JsonObject> {
 
     @Override
     public JsonArray addToJsonArray(JsonArray jsonArray, Object element) {
-        JsonPrimitive prim = constructPrimitive(element);
-        if (prim != null) {
-            jsonArray.add(prim);
+        if (element instanceof JsonElement) {
+            jsonArray.add((JsonElement) element);
         } else {
-            addToJsonArrayAsJsonTree(jsonArray, element);
+            JsonPrimitive prim = constructPrimitive(element);
+            if (prim != null) {
+                jsonArray.add(prim);
+            } else {
+                jsonArray.add((JsonElement) formAJsonTreeFromObject(element));
+            }
         }
         return jsonArray;
     }
@@ -66,9 +70,10 @@ public class GsonUtil extends JsonUtil<JsonArray, JsonObject> {
         return prim;
     }
 
-    public JsonElement get(Object obj){
+    public JsonElement get(Object obj) {
         return gson.toJsonTree(obj);
     }
+
     @Override
     public JsonArray newJsonArray() {
         return new JsonArray();
@@ -83,5 +88,11 @@ public class GsonUtil extends JsonUtil<JsonArray, JsonObject> {
     public JsonObject mergeInto(JsonObject det, JsonObject in) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Object formAJsonTreeFromObject(Object javaBean) {
+        return gson.toJsonTree(javaBean);
+    }
+    
 
 }
