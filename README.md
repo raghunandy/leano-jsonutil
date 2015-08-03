@@ -1,4 +1,4 @@
-# jsonutil
+# leano-jsonutil
 Simple Json Util Project for fastening your on fly Json creation.
 
 Json util is a developer friendly sepc and api for json manipulations. 
