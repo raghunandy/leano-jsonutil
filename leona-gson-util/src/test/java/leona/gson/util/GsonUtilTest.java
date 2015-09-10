@@ -104,8 +104,19 @@ public class GsonUtilTest {
         expResult.add(new JsonPrimitive(2L));
         JsonArray result = instance.addToJsonArray(jsonArray, element);
         assertEquals(expResult, result);
+        
+        try {
+            cat();
+        } catch (Exception e) {
+            System.out.println(e.getStackTrace()[3].getMethodName());
+        }
+        
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
+    }
+    
+    public void cat() throws NullPointerException{
+        throw new NullPointerException();
     }
 
     /**

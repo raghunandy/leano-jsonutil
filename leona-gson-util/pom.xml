@@ -5,6 +5,21 @@
     <artifactId>leona-gson-util</artifactId>
     <version>0.1</version>
     <packaging>jar</packaging>
+    <name>leona-gson-util</name>
+    <description>Simple Gson Util Project for fastening your on fly Json creation</description>
+    <url>https://github.com/visumagic/leano-jsonutil</url>
+ 
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+ 
+    <scm>
+        <url>http://svn.apache.org/viewvc/maven</url>
+    </scm>
+ 
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -29,5 +44,5 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-    <name>leona-gson-util</name>
+    
 </project>
